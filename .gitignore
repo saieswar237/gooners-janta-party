@@ -1,15 +1,23 @@
-# v0 sandbox internal files
-__v0_runtime_loader.js
-__v0_devtools.tsx
-__v0_jsx-dev-runtime.ts
-.snowflake/
-.v0-trash/
-.vercel/
-
-# Environment variables
-.env*.local
-
-# Common ignores
+# Dependencies
 node_modules
-.next/
+.pnp
+.pnp.js
+
+# Build Output
+.next
+out
+build
+dist
+
+# Environment Variables
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# System/IDE Files
 .DS_Store
+*.log
+.vscode
+.idea
