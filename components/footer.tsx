@@ -17,10 +17,10 @@ export function Footer() {
   ]
 
   const legal = [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
-    { label: "Disclaimer", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Cookie Policy", href: "/cookies" },
+    { label: "Disclaimer", href: "/disclaimer" },
   ]
 
   return (
@@ -105,24 +105,20 @@ export function Footer() {
           {/* Right side - Social Links */}
           <div className="flex items-center gap-6">
             <Link 
-              href="#" 
+              href="https://x.com/GoonersJanta" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs font-bold uppercase tracking-wider text-[#F4EFE6]/70 transition-colors hover:text-[#C44536]"
             >
               Twitter
             </Link>
             <Link 
-              href="https://instagram.com/thesai.x" 
+              href="https://instagram.com/goonersjantapartyy" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-bold uppercase tracking-wider text-[#F4EFE6]/70 transition-colors hover:text-[#C44536]"
             >
               Instagram
-            </Link>
-            <Link 
-              href="#" 
-              className="text-xs font-bold uppercase tracking-wider text-[#F4EFE6]/70 transition-colors hover:text-[#C44536]"
-            >
-              YouTube
             </Link>
           </div>
         </div>
