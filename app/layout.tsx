@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist_Mono } from 'next/font/google'
 import { Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 
 const geistMono = Geist_Mono({ 
@@ -49,6 +50,7 @@ export default function RootLayout({
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
+      <GoogleAnalytics gaId="G-CTR5S0EWHK" />
     </html>
   )
 }
