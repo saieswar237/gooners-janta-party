@@ -4,10 +4,10 @@
 
 Gooners Janta Party is India's #1 satirical political party. We demand free WiFi, 75% reservation for singles, and professional recognition. This project was built to test the limits of modern web development, high-performance SEO, and digital political activism.
 
-### 🚀 Live Demo
+### 🚀 Live Website
 [View the Official Platform](https://gooners-janta-party-385330076013.asia-south1.run.app)
 
-### 🛠️ The Manifesto (Tech Stack)
+### 🛠️ Tech Stack
 This project is optimized for speed and performance.
 * **Framework:** Next.js (App Router)
 * **Styling:** Tailwind CSS
