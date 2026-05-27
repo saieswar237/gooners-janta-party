@@ -1,0 +1,170 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #F4EFE6;
+  --foreground: #1a1a1a;
+  --card: #F4EFE6;
+  --card-foreground: #1a1a1a;
+  --popover: #F4EFE6;
+  --popover-foreground: #1a1a1a;
+  --primary: #C44536;
+  --primary-foreground: #F4EFE6;
+  --secondary: #2D4B2E;
+  --secondary-foreground: #F4EFE6;
+  --muted: #e8e3da;
+  --muted-foreground: #4a4a4a;
+  --accent: #2D4B2E;
+  --accent-foreground: #F4EFE6;
+  --destructive: #C44536;
+  --destructive-foreground: #F4EFE6;
+  --border: #1a1a1a;
+  --input: #F4EFE6;
+  --ring: #C44536;
+  --chart-1: #C44536;
+  --chart-2: #2D4B2E;
+  --chart-3: #1a1a1a;
+  --chart-4: #e8e3da;
+  --chart-5: #4a4a4a;
+  --radius: 0;
+  --sidebar: #F4EFE6;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #C44536;
+  --sidebar-primary-foreground: #F4EFE6;
+  --sidebar-accent: #2D4B2E;
+  --sidebar-accent-foreground: #F4EFE6;
+  --sidebar-border: #1a1a1a;
+  --sidebar-ring: #C44536;
+}
+
+.dark {
+  --background: #1a1a1a;
+  --foreground: #F4EFE6;
+  --card: #1a1a1a;
+  --card-foreground: #F4EFE6;
+  --popover: #1a1a1a;
+  --popover-foreground: #F4EFE6;
+  --primary: #C44536;
+  --primary-foreground: #F4EFE6;
+  --secondary: #2D4B2E;
+  --secondary-foreground: #F4EFE6;
+  --muted: #2a2a2a;
+  --muted-foreground: #a0a0a0;
+  --accent: #2D4B2E;
+  --accent-foreground: #F4EFE6;
+  --destructive: #C44536;
+  --destructive-foreground: #F4EFE6;
+  --border: #F4EFE6;
+  --input: #2a2a2a;
+  --ring: #C44536;
+  --chart-1: #C44536;
+  --chart-2: #2D4B2E;
+  --chart-3: #F4EFE6;
+  --chart-4: #4a4a4a;
+  --chart-5: #a0a0a0;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #F4EFE6;
+  --sidebar-primary: #C44536;
+  --sidebar-primary-foreground: #F4EFE6;
+  --sidebar-accent: #2D4B2E;
+  --sidebar-accent-foreground: #F4EFE6;
+  --sidebar-border: #F4EFE6;
+  --sidebar-ring: #C44536;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
