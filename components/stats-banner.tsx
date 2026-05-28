@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export function LivePledgesCounter() {
+export default function LivePledgesCounter() {
   const [pledges, setPledges] = useState<number>(0);
   const [mounted, setMounted] = useState<boolean>(false);
 
