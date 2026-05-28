@@ -1,56 +1,53 @@
-'use client';
+import Link from "next/link"
 
-import { useEffect, useState } from 'react';
-
-export function PledgeCounter() {
-  const [pledges, setPledges] = useState<number>(120); // Set your base default here
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    // 1. Signal that we are safely running in the browser
-    setMounted(true);
-
-    // 2. Get or set the persistent value
-    const savedPledges = localStorage.getItem('gjp_pledges');
-    let currentBaseline = 120;
-
-    if (savedPledges) {
-      const parsed = parseInt(savedPledges, 10);
-      if (!isNaN(parsed)) {
-        currentBaseline = parsed;
-      }
-    } else {
-      localStorage.setItem('gjp_pledges', currentBaseline.toString());
-    }
-
-    setPledges(currentBaseline);
-
-    // 3. Set up the continuous ticker
-    const interval = setInterval(() => {
-      setPledges((prev) => {
-        const nextValue = prev + 1;
-        localStorage.setItem('gjp_pledges', nextValue.toString());
-        return nextValue;
-      });
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // If the component hasn't fully mounted in the browser yet, show a clean loading layout or the baseline
-  if (!mounted) {
-    return (
-      <div className="text-center opacity-0">
-        <span className="text-3xl font-bold">120</span>
-        <p className="text-xs uppercase tracking-wider">Pledges Received</p>
-      </div>
-    );
-  }
-
+export default function CookiePolicy() {
   return (
-    <div className="text-center transition-opacity duration-300 opacity-100">
-      <span className="text-3xl font-bold">{pledges}</span>
-      <p className="text-xs uppercase tracking-wider">Pledges Received</p>
-    </div>
+    <main className="min-h-screen bg-[#F4F1E1] text-[#2C2C2C] p-10 md:p-24 font-mono">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-8 uppercase tracking-wider border-b-2 border-[#2C2C2C] pb-4">
+          Cookie Policy
+        </h1>
+        
+        <p className="mb-8 text-sm italic">
+          <strong>Effective Date:</strong> May 2026
+        </p>
+        
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold uppercase tracking-wide mb-4 text-[#C44536]">
+            1. What are cookies?
+          </h2>
+          <p className="mb-4 leading-relaxed">
+            Cookies are small text files that websites place on your device. We use them primarily for Google Analytics so we can stare at our live user map and feel important.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold uppercase tracking-wide mb-4 text-[#C44536]">
+            2. How we use them
+          </h2>
+          <p className="mb-4 leading-relaxed">
+            We use performance cookies to measure site speed and traffic. We do not use advertising cookies because we do not have an ad budget.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold uppercase tracking-wide mb-4 text-[#C44536]">
+            3. Managing Cookies
+          </h2>
+          <p className="mb-4 leading-relaxed">
+            You can disable cookies in your browser settings, but honestly, it won't stop the revolution. 
+          </p>
+        </section>
+        
+        <div className="mt-12 pt-8 border-t-2 border-dashed border-[#2C2C2C]">
+          <Link 
+            href="/" 
+            className="inline-block border-2 border-[#2C2C2C] bg-[#2C2C2C] px-4 py-2 text-sm font-bold uppercase text-[#F4F1E1] transition-colors hover:bg-transparent hover:text-[#2C2C2C]"
+          >
+            ← Back to Headquarters
+          </Link>
+        </div>
+      </div>
+    </main>
   );
 }
