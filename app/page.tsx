@@ -1,7 +1,7 @@
 import { WarningBar } from "@/components/warning-bar"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
-import { StatsBanner } from "@/components/stats-banner"
+import StatsBanner from "@/components/stats-banner" // <-- Removed the curly braces here!
 import { VisionSection } from "@/components/vision-section"
 import { AgendasSection } from "@/components/agendas-section"
 import { EligibilitySection } from "@/components/eligibility-section"
