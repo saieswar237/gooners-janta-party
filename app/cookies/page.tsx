@@ -1,30 +1,56 @@
-import Link from "next/link"
+'use client';
 
-export default function CookiePolicy() {
-  return (
-    <main className="min-h-screen bg-[#F4F1E1] text-[#2C2C2C] p-10 md:p-24 font-mono">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Cookie Policy</h1>
-        
-        <h2 className="text-2xl font-bold mt-8 mb-4">What are cookies?</h2>
-        <p className="mb-4">
-          Cookies are small text files that websites place on your device. We use them primarily for Google Analytics and Vercel Analytics so we can stare at our live user map and feel important.
-        </p>
+import { useEffect, useState } from 'react';
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">How we use them</h2>
-        <p className="mb-4">
-          We use performance cookies to measure site speed and traffic. We do not use advertising cookies because we do not have an ad budget.
-        </p>
+export function PledgeCounter() {
+  const [pledges, setPledges] = useState<number>(120); // Set your base default here
+  const [mounted, setMounted] = useState<boolean>(false);
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">Managing Cookies</h2>
-        <p className="mb-4">
-          You can disable cookies in your browser settings, but honestly, it won't stop the revolution. 
-        </p>
-        
-        <div className="mt-12 pt-8 border-t border-[#2C2C2C]">
-          <Link href="/" className="hover:underline">← Back to Headquarters</Link>
-        </div>
+  useEffect(() => {
+    // 1. Signal that we are safely running in the browser
+    setMounted(true);
+
+    // 2. Get or set the persistent value
+    const savedPledges = localStorage.getItem('gjp_pledges');
+    let currentBaseline = 120;
+
+    if (savedPledges) {
+      const parsed = parseInt(savedPledges, 10);
+      if (!isNaN(parsed)) {
+        currentBaseline = parsed;
+      }
+    } else {
+      localStorage.setItem('gjp_pledges', currentBaseline.toString());
+    }
+
+    setPledges(currentBaseline);
+
+    // 3. Set up the continuous ticker
+    const interval = setInterval(() => {
+      setPledges((prev) => {
+        const nextValue = prev + 1;
+        localStorage.setItem('gjp_pledges', nextValue.toString());
+        return nextValue;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // If the component hasn't fully mounted in the browser yet, show a clean loading layout or the baseline
+  if (!mounted) {
+    return (
+      <div className="text-center opacity-0">
+        <span className="text-3xl font-bold">120</span>
+        <p className="text-xs uppercase tracking-wider">Pledges Received</p>
       </div>
-    </main>
+    );
+  }
+
+  return (
+    <div className="text-center transition-opacity duration-300 opacity-100">
+      <span className="text-3xl font-bold">{pledges}</span>
+      <p className="text-xs uppercase tracking-wider">Pledges Received</p>
+    </div>
   );
 }
